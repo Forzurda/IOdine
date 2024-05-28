@@ -3,6 +3,7 @@ from typing import Optional, List
 from discord.ext import commands
 from discord import app_commands
 from pprint import pprint
+from discord.utils import *
 from cogs.misc.roles import Roles
 from cogs.misc import utils
 
@@ -33,36 +34,35 @@ class General(commands.Cog):
 # --------------------------------- /inrole (this is horrible but we ball)
     @app_commands.command(name='inrole', description='view users inside a role')
     @app_commands.describe(
-        role_name1="Name of the first role",
-        role_name2="Name of the second role",
-        role_name3="Name of the third role"
+        role1="Name of the first role",
+        role2="Name of the second role",
+        role3="Name of the third role"
     )
     async def list_role_members(
         self, 
         interaction: discord.Interaction, 
-        role_name1: str, 
-        role_name2: Optional[str] = None, 
-        role_name3: Optional[str] = None
+        role1: discord.Role, 
+        role2: discord.Role = None, 
+        role3: discord.Role = None
     ):
         guild = interaction.guild
-        role_mentions = [role_name1, role_name2, role_name3]
-        roles = []
+        '''
+        - Converted the types for role_names from str to discord.Role type
+        - Added a simplified None check for the roles, as a user will not be able to type in a fake role
+        - 
 
-        # Filter out None values
-        role_mentions = [mention for mention in role_mentions if mention]
+        '''
+        roles = [role1, role2, role3]
+        roles_objs = []
 
-
-        # Find roles and handle errors
-        for mention in role_mentions:
-            role_id = int(mention.strip('<@&>'))  # Extract role ID from mention
-            role = discord.utils.get(guild.roles, id=role_id)
-            if not role:
-                await interaction.response.send_message(f"Role not found: {mention}", ephemeral=True)
-                return
-            roles.append(role)
+        for r in roles:
+            if r:
+                role_objects = discord.utils.get(guild.roles, name=r.name)
+                if role_objects:
+                    roles_objs.append(role_objects)
 
         user_roles = {}
-        for role in roles:
+        for role in roles_objs:
             for member in role.members:
                 if member.name not in user_roles:
                     user_roles[member.name] = []
@@ -70,31 +70,33 @@ class General(commands.Cog):
 
 
         user_count = len(user_roles)
-        title = f"Members with "+", ".join(role.name for role in roles) ({user_count})
+        title = f"({user_count}) Members with "+" or ".join(role.name for role in roles_objs) 
         embed = discord.Embed(title=title, color=roles[0].color)  # Use color of first role
 
         if not user_roles:
             embed.description = "There are currently no members in any of these roles."
         else:
             if len(roles)>1:
-                user_list = "\n".join(f"{username}:\n    {', '.join(user_roles[username])}" for username in sorted(user_roles.keys()))
+                user_list = "\n".join(f"**{username}**:\n    `{', '.join(user_roles[username])}`\n" for username in sorted(user_roles.keys()))
             else:
                 user_list = "\n".join(f"{username}" for username in sorted(user_roles.keys()))
-            embed.add_field(name="Users", value=user_list)
+            for user in user_roles:
+                # append user key as field name and value as roles
+                embed.add_field(name=user, value=", ".join([get(guild.roles, name=role).mention for role in user_roles[user]]), inline=False)
 
         await interaction.response.send_message(embed=embed)
 
-    @list_role_members.autocomplete('role_name1')
-    @list_role_members.autocomplete('role_name2')
-    @list_role_members.autocomplete('role_name3')
-    async def autocomplete_roles(self, interaction: discord.Interaction, current: str) -> List[app_commands.Choice[str]]:
-        guild = interaction.guild
-        roles = guild.roles
-        matching_roles = [
-            app_commands.Choice(name=role.name, value=role.mention)
-            for role in roles if current.lower() in role.name.lower()
-        ]
-        return matching_roles[:10]
+    # @list_role_members.autocomplete('role_name1')
+    # @list_role_members.autocomplete('role_name2')
+    # @list_role_members.autocomplete('role_name3')
+    # async def autocomplete_roles(self, interaction: discord.Interaction, current: str) -> List[app_commands.Choice[str]]:
+    #     guild = interaction.guild
+    #     roles = guild.roles
+    #     matching_roles = [
+    #         app_commands.Choice(name=role.name, value=role.mention)
+    #         for role in roles if current.lower() in role.name.lower()
+    #     ]
+    #     return matching_roles[:10]
 
 # --------------------------------- /.sync_general  (sync commands you dummy)
     @commands.command()

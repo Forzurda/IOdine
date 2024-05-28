@@ -36,7 +36,7 @@ class MyBot(commands.Bot):
             intents=discord.Intents.all(), 
             command_prefix='.',
             # Activity types are playing, gaming, listening, watching 
-            activity=discord.Activity(type=discord.ActivityType.watching, name='In Development'))
+            activity=discord.Activity(type=discord.ActivityType.watching, name='In Development.'))
 
     '''
     Use this versus load + asyncio. This is automatically ran when the bot comes online
@@ -68,10 +68,21 @@ class MyBot(commands.Bot):
 bot = MyBot()
 tree = bot.tree
 
+# reloads all cogs, should not be a rate limit but consider doing specific cog reload in future
+@bot.command(name="reload_cogs")
+@commands.is_owner()
+async def re_load(ctx):
+        for filename in os.listdir('./cogs'):
+            if filename.endswith('.py'):
+                await bot.reload_extension(f'cogs.{filename[:-3]}')
+                print(filename)
+        await ctx.send(f"reloaded {len(os.listdir('./cogs'))} cogs.")
+
+
 @bot.command(name="sync")
 @commands.is_owner()
 async def sync(ctx):
     synced = await tree.sync(guild=discord.Object(id=1155194688375103592))
-    await ctx.send(f"synced {len(synced)} Main commands")
+    await ctx.send(f"synced {len(synced)} Main commands.")
 
 bot.run(token)
