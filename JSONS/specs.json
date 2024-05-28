@@ -1,0 +1,40 @@
+{
+    "specializations": [
+        {
+            "name": "Grappling Hook",
+            "build": "Light"
+        },
+        {
+            "name": "Cloaking Device",
+            "build": "Light"
+        },
+        {
+            "name": "Evasive Dash",
+            "build": "Light"
+        },
+        {
+            "name": "Dematerializer",
+            "build": "Medium"
+        },
+        {
+            "name": "Healing Beam",
+            "build": "Medium"
+        },
+        {
+            "name": "Guardian Turret",
+            "build": "Medium"
+        },
+        {
+            "name": "Charge ‘N’ Slam",
+            "build": "Heavy"
+        },
+        {
+            "name": "Goo Gun",
+            "build": "Heavy"
+        },
+        {
+            "name": "Mesh Shield",
+            "build": "Heavy"
+        }
+    ]
+}

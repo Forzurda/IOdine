@@ -1,0 +1,123 @@
+{
+    "gadgets": [
+        {
+            "name": "Breach Charge", 
+            "build": ["Light"]
+        },
+        {
+            "name": "Gateway", 
+            "build": ["Light"]
+        },
+        {
+            "name": "Glitch Grenade",
+            "build": ["Light"]
+        },
+        {
+            "name": "Smoke Grenade", 
+            "build": ["Light"]
+        },
+        {
+            "name": "Sonar Grenade", 
+            "build": ["Light"]
+        },
+        {
+            "name": "Stun Gun", 
+            "build": ["Light"]
+        },
+        {
+            "name": "Thermal Vision", 
+            "build": ["Light"]
+        },
+        {
+            "name": "Tracking Dart", 
+            "build": ["Light"]
+        },
+        {
+            "name": "Vanishing Bomb", 
+            "build": ["Light"]
+        },
+        
+        {
+            "name": "APS Turret", 
+            "build": ["Medium"]
+        },
+        {
+            "name": "Data Reshaper", 
+            "build": ["Medium"]
+        },
+        {
+            "name": "Defibrillator", 
+            "build": ["Medium"]
+        },
+        {
+            "name": "Explosive Mine", 
+            "build": ["Medium, Heavy"]
+        },
+        {
+            "name": "Gas Mine", 
+            "build": ["Medium"]
+        },
+        {
+            "name": "Glitch Trap", 
+            "build": ["Medium"]
+        },
+        {
+            "name": "Jump Pad", 
+            "build": ["Medium"]
+        },
+        {
+            "name": "Zipline", 
+            "build": ["Medium"]
+        },
+
+        {
+            "name": "Anti-Gravity Cube", 
+            "build": ["Heavy"]
+        },
+        {
+            "name": "Barricade", 
+            "build": ["Heavy"]
+        },
+        {
+            "name": "C4", 
+            "build": ["Heavy"]
+        },
+        {
+            "name": "Dome Shield", 
+            "build": ["Heavy"]
+        },
+        {
+            "name": "Motion Sensor", 
+            "build": ["Heavy"]
+        },
+        {
+            "name": "Pyro Mine", 
+            "build": ["Heavy"]
+        },
+        {
+            "name": "RPG-7", 
+            "build": ["Heavy"]
+        },
+
+        {
+            "name": "Flashbang", 
+            "build": ["Light", "Medium", "Heavy"]
+        },
+        {
+            "name": "Frag Grenade", 
+            "build": ["Light", "Medium", "Heavy"]
+        },
+        {
+            "name": "Gas Grenade", 
+            "build": ["Light", "Medium", "Heavy"]
+        },
+        {
+            "name": "Goo Grenade", 
+            "build": ["Light", "Medium", "Heavy"]
+        },
+        {
+            "name": "Pyro Grenade", 
+            "build": ["Light", "Medium", "Heavy"]
+        }
+    ]
+}

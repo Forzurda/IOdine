@@ -1,0 +1,102 @@
+{
+    "guns": [
+        {
+            "name": "93R",
+            "build": "Light"
+        },
+        {
+            "name": "V9S",
+            "build": "Light"
+        },
+        {
+            "name": "M11",
+            "build": "Light"
+        },
+        {
+            "name": "LH1",
+            "build": "Light"
+        },
+        {
+            "name": "Dagger",
+            "build": "Light"
+        },
+        {
+            "name": "Sword",
+            "build": "Light"
+        },
+        {
+            "name": "SH1900",
+            "build": "Light"
+        },
+        {
+            "name": "SR-84",
+            "build": "Light"
+        },
+        {
+            "name": "Throwing Knives",
+            "build": "Light"
+        },
+        {
+            "name": "XP-54",
+            "build": "Light"
+        },
+
+        {
+            "name": "AKM",
+            "build": "Medium"
+        },
+        {
+            "name": "FCAR",
+            "build": "Medium"
+        },
+        {
+            "name": "CL-40",
+            "build": "Medium"
+        },
+        {
+            "name": "Model 1887",
+            "build": "Medium"
+        },
+        {
+            "name": "FAMAS",
+            "build": "Medium"
+        },
+        {
+            "name": "R.357",
+            "build": "Medium"
+        },
+        {
+            "name": "Riot Shield",
+            "build": "Medium"
+        },
+
+        {
+            "name": "SA1216",
+            "build": "Heavy"
+        },
+        {
+            "name": "KS-23",
+            "build": "Heavy"
+        },
+        {
+            "name": "Lewis Gun",
+            "build": "Heavy"
+        },
+        {
+            "name": "Flamethrower",
+            "build": "Heavy"
+        },
+        {
+            "name": "MGL32",
+            "build": "Heavy"
+        },
+        {
+            "name": "M60",
+            "build": "Heavy"
+        },
+        {
+            "name": "Sledgehammer",
+            "build": "Heavy"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "builds": [
+        {
+            "build": "Light",
+            "abbreviation": "L"
+        },
+        {
+            "build": "Medium",
+            "abbreviation": "M"
+        },
+        {
+            "build": "Heavy",
+            "abbreviation": "H"
+        }
+    ]
+}
