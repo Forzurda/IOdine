@@ -5,20 +5,20 @@ from pprint import pprint
 
 # Role mapping dictionary
 SELECTION_ROLE_MAP = {
-    "Q-1": "Test1",
-    "Q-2": "Test2",
-    "Q-3": "Test3",
-    "Q-4": "Test4",
-    "Q-5": "Test5",
-    "Q-6": "Test6",
-    "Q-7": "Test7",
-    "Q-8": "Test8",
-    "Q-9": "Test9",
-    "Q-10": "Test10"
+    "Q-1": "Q-1",
+    "Q-2": "Q-2",
+    "Q-3": "Q-3",
+    "Q-4": "Q-4",
+    "Q-5": "Q-5",
+    "Q-6": "Q-6",
+    "Q-7": "Q-7",
+    "Q-8": "Q-8",
+    "Q-9": "Q-9",
+    "Q-10": "Q-10"
 }
 
-TARGET_CHANNEL_ID = 1244928376419123342  # Quali Channel ID
-ALLOWED_ROLES = ["Dev"]  # Replace with your allowed role names
+TARGET_CHANNEL_ID = 1224169292077994014  # Quali Channel ID
+ALLOWED_ROLES = ["Staff", "Moderator", "Admin", "Owner", "Dev"]  # Replace with your allowed role names
 
 class Select(discord.ui.Select):
     def __init__(self):
@@ -98,7 +98,7 @@ class SelectMenu(commands.Cog):
     @commands.has_any_role(*ALLOWED_ROLES)  # Restrict command to specific roles
     async def sync_quali(self, ctx):
         try:
-            guild = discord.Object(id=1155194688375103592)  # Replace with your guild ID
+            guild = discord.Object(id=1077859376414593124)  # Replace with your guild ID
             self.bot.tree.copy_global_to(guild=guild)
             synced = await self.bot.tree.sync(guild=guild)
             await ctx.send(f"Synced {len(synced)} QualiMessage command.")

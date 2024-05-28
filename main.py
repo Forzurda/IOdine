@@ -76,13 +76,13 @@ async def re_load(ctx):
             if filename.endswith('.py'):
                 await bot.reload_extension(f'cogs.{filename[:-3]}')
                 print(filename)
-        await ctx.send(f"reloaded {len(os.listdir('./cogs'))} cogs.")
+        await ctx.send(f"Reloaded {len(os.listdir('./cogs'))} cogs.")
 
 
 @bot.command(name="sync")
 @commands.is_owner()
 async def sync(ctx):
-    synced = await tree.sync(guild=discord.Object(id=1155194688375103592))
+    synced = await tree.sync(guild=discord.Object(id=1077859376414593124))
     await ctx.send(f"synced {len(synced)} Main commands.")
 
 bot.run(token)
