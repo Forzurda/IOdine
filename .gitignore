@@ -1,5 +1,7 @@
+testing/
 # Byte-compiled / optimized / DLL files
 __pycache__/
+Scripts/
 *.py[cod]
 *$py.class
 
