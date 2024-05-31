@@ -90,7 +90,7 @@ class General(commands.Cog):
     
 # --------------------------------- /nuke 1hor
     @app_commands.command(name='clear', description='clear [number] of messages')
-    @app_commands.checks.has_role(1080417425167753266)
+    @app_commands.checks.has_permissions(moderate_members=True)
     async def clear(self, interaction: discord.Interaction, number: int):
         await interaction.response.send_message(embed=utils.embed_success(f'Deleted {number} message(s)'), ephemeral=True)
         await interaction.channel.purge(limit=number) 
