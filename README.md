@@ -4,7 +4,7 @@
     <p align='center'>
       <b>IOdyne.</b>
         </b></b>
-      <b>A custom multipurpose bot for RacingHaven written using Pycord 2.5.</b>
+      <b>A custom multipurpose bot for RacingHaven, written using Pycord 2.5.</b>
     </p>
     <br />
     <p>
