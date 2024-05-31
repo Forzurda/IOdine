@@ -3,6 +3,7 @@ import os
 import traceback
 from pprint import pprint
 import discord
+from discord.utils import *
 from discord import app_commands, ui
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
@@ -33,7 +34,8 @@ class MyBot(commands.Bot):
     
     # Not really important, but console updating stating that the bot is live
     async def on_ready(self):
-        pprint(f'✅ Running as {self.user}')
+        await bot.get_channel(1244591766779465728).send(":white_check_mark: Bot online")
+        pprint(f"✅ Bot Online.")
     
 
 bot = MyBot()
