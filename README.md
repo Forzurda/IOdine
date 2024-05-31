@@ -7,6 +7,6 @@
     </p>
     <br />
     <p>
-        <a href="https://discord.gg/racinghaven"><img src="https://img.shields.io/discord/881207955029110855?color=5865F2&logo=discord&logoColor=white" alt="discord"> </a>
+        <a href="https://discord.gg/racinghaven"><img src="https://img.shields.io/discord/1077859376414593124?color=5865F2&logo=discord&logoColor=white" alt="discord"> </a>
     </p>
 </div>
