@@ -4,7 +4,7 @@ from discord import app_commands
 from pprint import pprint
 
 # Constants
-TARGET_CHANNEL_ID = 1209821638422564864  # Quali Channel ID
+TARGET_CHANNEL_ID = 1209821638422564864 # Quali Channel ID
 ALLOWED_ROLES = ["Staff", "Moderator", "Admin", "Owner", "Dev"]  # Replace with your allowed role names
 HARDCODED_ROLE_NAME = "Ready"  # The role to be assigned by the button
 
