@@ -34,7 +34,7 @@ class Select(discord.ui.Select):
             discord.SelectOption(label="Q-9"),
             discord.SelectOption(label="Q-10")
         ]
-        super().__init__(placeholder="Select a qualifying session", max_values=1, min_values=1, options=options)
+        super().__init__(placeholder="Select a qualifying session", max_values=1, min_values=1, options=options, custom_id="select_qualifying_session")
 
     async def callback(self, interaction: discord.Interaction):
         selected_value = self.values[0]
@@ -51,13 +51,13 @@ class Select(discord.ui.Select):
 
             # Add the new role
             await member.add_roles(new_role)
-            await interaction.response.send_message(f'You selected {selected_value} and have been assigned the role {new_role_name}.', ephemeral=True)
+            await interaction.response.send_message(f'You selected {selected_value} and have been assigned the role {new_role_name}.', ephemeral=True, delete_after=10.0)
             pprint(f'{interaction.user} selected {new_role}.')
         else:
             await interaction.response.send_message(f'The role {new_role_name} does not exist.', ephemeral=True)
 
 class SelectView(discord.ui.View):
-    def __init__(self, *, timeout=180):
+    def __init__(self, *, timeout=None):
         super().__init__(timeout=timeout)
         self.add_item(Select())
 
@@ -67,7 +67,8 @@ class SelectMenu(commands.Cog):
         
     @commands.Cog.listener()
     async def on_ready(self):
-        pprint('QualiMessage cog loaded')
+        self.bot.add_view(SelectView())
+        pprint('QualiMessage cog loaded and view registered')
 
     @app_commands.command(name="qualifying_menu_send", description="Send a qualifying time with menu select")
     @commands.has_any_role(*ALLOWED_ROLES)  # Restrict command to specific roles
