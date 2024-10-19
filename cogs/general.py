@@ -149,23 +149,25 @@ class General(commands.Cog):
         else:
             
             fields = []
-            for user, roles in user_roles.items():
-                fields.append((user, ", ".join([discord.utils.get(guild.roles, name=role).mention for role in roles])))
+        for user, roles in user_roles.items():
+            roles_mentions = ", ".join([discord.utils.get(guild.roles, name=role).mention for role in roles])
+            fields.append((roles_mentions, user))
 
-            pages = math.ceil(len(fields) / 25)
-            for page in range(pages):
-                embed = discord.Embed(title=title, color=roles_objs[0].color if roles_objs else discord.Color.default())
-                for user, roles in fields[page*25:(page+1)*25]:
-                    if len(roles_objs)>1:
-                        embed.add_field(name=user, value=roles, inline=False)
-                    else:
-                        embed.add_field(name=user, value="", inline=False)
-                embed.set_footer(text=f"Page {page + 1} of {pages}")
-                embeds.append(embed)
+        pages = math.ceil(len(fields) / 25)
+
+        for page in range(pages):
+            embed = discord.Embed(title=title, color=roles_objs[0].color if roles_objs else discord.Color.default())
+            for roles_mentions, user in fields[page * 25:(page + 1) * 25]:
+                if len(roles_objs) > 1:
+                    embed.add_field(name=roles_mentions, value=user, inline=False)
+                else:
+                    embed.add_field(name=roles_mentions, value="", inline=False)
+            embed.set_footer(text=f"Page {page + 1} of {pages}")
+            embeds.append(embed)
 
 
-            menu = EmbedMenu(embeds)
-            menu.message = await interaction.response.send_message(embed=embeds[0], view=menu)
+        menu = EmbedMenu(embeds)
+        menu.message = await interaction.response.send_message(embed=embeds[0], view=menu)
 
     # @list_role_members.autocomplete('role_name1')
     # @list_role_members.autocomplete('role_name2')
